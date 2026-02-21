@@ -27,6 +27,7 @@ public class ListaEstatica {
         return this.qtd;
     }
     
+    // Lista está vazia?
     public boolean eVazia() {
         return (tamanhoLista() == 0);
     }
@@ -41,9 +42,24 @@ public class ListaEstatica {
         return temp;
     }
     
+    // Insrir em lista vazia
     public void inserirListaVazia(double valor) {
         this.vetor[0] = valor;
         qtd++;
     }
     
+    // Inserir no fim da lista
+    public void inserirFimLista(double valor) {
+        this.vetor[this.qtd] = valor;
+        this.qtd++;
+    }
+    
+    // Fiz sem o prof ???
+    public void inserirInicioLista(double valor) {
+        for(int i = this.qtd; i >= 0; i--) {
+            this.vetor[i + 1] = this.vetor[i];
+        }
+        this.vetor[0] = valor;
+        qtd++;
+    }
 }

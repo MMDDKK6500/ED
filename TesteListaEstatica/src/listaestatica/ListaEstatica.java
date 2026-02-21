@@ -43,23 +43,56 @@ public class ListaEstatica {
     }
     
     // Insrir em lista vazia
-    public void inserirListaVazia(double valor) {
+    private void inserirListaVazia(double valor) {
         this.vetor[0] = valor;
         qtd++;
     }
     
     // Inserir no fim da lista
-    public void inserirFimLista(double valor) {
+    private void inserirFimLista(double valor) {
         this.vetor[this.qtd] = valor;
         this.qtd++;
     }
     
     // Fiz sem o prof ???
-    public void inserirInicioLista(double valor) {
+    private void inserirInicioLista(double valor) {
         for(int i = this.qtd; i >= 0; i--) {
             this.vetor[i + 1] = this.vetor[i];
         }
         this.vetor[0] = valor;
         qtd++;
     }
+    
+    // Feito com base no inserirInicioLista
+    private void inserirMeioLista(double valor, int pos) {
+        for(int i = this.qtd; i >= pos; i--) {
+            this.vetor[i + 1] = this.vetor[i];
+        }
+        this.vetor[pos] = valor;
+        qtd++;
+    }
+    
+    
+    public boolean inserir(double valor) {
+        if (eVazia()) {
+            inserirListaVazia(valor);
+        } else {
+            inserirFimLista(valor);
+        }
+        return true;
+    }
+    
+    public boolean inserir(double valor, int pos) {
+        if (pos < 0) return false;
+        if (eVazia() && pos > 0) return false;
+        if (eVazia() && pos == 0) inserirListaVazia(valor);
+        if (pos == 0) inserirInicioLista(valor);
+        if (pos == tamanhoLista()) {
+            inserirFimLista(valor);
+            return true;
+        }
+        inserirMeioLista(valor, pos);
+        return true;
+    }
+
 }

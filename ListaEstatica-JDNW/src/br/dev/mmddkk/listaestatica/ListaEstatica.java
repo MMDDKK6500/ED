@@ -1,4 +1,4 @@
-package listaestatica;
+package br.dev.mmddkk.listaestatica;
 
 public class ListaEstatica {
     
@@ -6,20 +6,11 @@ public class ListaEstatica {
     private double[] vetor;
     private int qtd;
     
+    // Construtor
     public ListaEstatica(int tamanhoMaximo) {
         this.tamanhoMaximo = tamanhoMaximo;
         this.vetor = new double[tamanhoMaximo];
         this.qtd = 0;
-    }
-    
-    // Retornar todos os valores do vetor
-    public String printVetor() {
-        String temp = "";
-        
-        for(double d : this.vetor) {
-            temp += Double.toString(d) + " - ";
-        }
-        return temp;
     }
     
     //Retornar tamanho da lista
@@ -30,16 +21,6 @@ public class ListaEstatica {
     // Lista está vazia?
     public boolean eVazia() {
         return (tamanhoLista() == 0);
-    }
-    
-    // Retornar todos os valores da lista
-    public String printLista() {
-        String temp = "";
-        
-        for (int i = 0; i < tamanhoLista(); i++) {
-            temp += Double.toString(this.vetor[i]) + " - ";
-        }
-        return temp;
     }
     
     // Insrir em lista vazia
@@ -72,7 +53,7 @@ public class ListaEstatica {
         qtd++;
     }
     
-    
+    // Inserir unificado com if
     public boolean inserir(double valor) {
         if (eVazia()) {
             inserirListaVazia(valor);
@@ -82,6 +63,7 @@ public class ListaEstatica {
         return true;
     }
     
+    // Inserir unificado com if
     public boolean inserir(double valor, int pos) {
         if (pos < 0) return false;
         if (eVazia() && pos > 0) return false;
@@ -94,5 +76,47 @@ public class ListaEstatica {
         inserirMeioLista(valor, pos);
         return true;
     }
+    
+    // Remove elemento no fim
+    private void removerFim() {
+        this.vetor[this.qtd] = 0;
+        this.qtd--;
+    }
+    
+    //Remove elemento em qualquer posição
+    public boolean remover(int pos) {
+        if (pos < 0 || pos > this.qtd - 1) return false;
+        if (eVazia() && pos > 0) return false;
+        if (pos == tamanhoLista()) {
+            removerFim();
+            return true;
+        }        
+        
+        for(int i = pos; i <= qtd; i++) {
+            this.vetor[i] = this.vetor[i + 1];
+        }
+        qtd--;
+        return true;
+    }
 
+    // Retornar todos os valores do vetor
+    public String printVetor() {
+        String temp = "";
+        
+        for(double d : this.vetor) {
+            temp += Double.toString(d) + " - ";
+        }
+        return temp;
+    }    
+    
+    // Retornar todos os valores da lista
+    public String printLista() {
+        String temp = "";
+        
+        for (int i = 0; i < tamanhoLista(); i++) {
+            temp += Double.toString(this.vetor[i]) + " - ";
+        }
+        return temp;
+    }    
+    
 }

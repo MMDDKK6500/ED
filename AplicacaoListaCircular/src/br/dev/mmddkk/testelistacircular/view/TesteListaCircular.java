@@ -18,6 +18,11 @@ public class TesteListaCircular {
         lista.inserir(100, 1);
         System.out.println(lista.toString());
         
+//        lista.removerPrimeiroLista();
+//        lista.removerPrimeiroLista();
+        
+        System.out.println(lista.toString());
+        
     }
     
 }

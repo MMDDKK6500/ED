@@ -101,6 +101,21 @@ public class ListaCircular {
         inserirMeioLista(valor, pos);
     }
     
+    
+    // Remoções
+    /*
+    // huh??? how
+    public void removerPrimeiroLista() {
+        No temp = this.inicio;
+        
+        this.inicio = this.inicio.getProx();
+        this.inicio.setAnt(temp.getAnt());
+        
+        temp = null;
+        
+    }
+    */
+    
     public int pegarTamanho() {
         if (this.inicio == null) return 0;
         No aux = this.inicio.getProx();

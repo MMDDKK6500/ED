@@ -92,4 +92,48 @@ public class ABB {
         System.out.printf("%.2f - ", aux.getValor());
     }
     
+    public int grau(No aux) {
+        if(aux.getDireita() == null && aux.getEsquerda() == null) {
+            return 0;
+        }
+        if (aux.getDireita() != null && aux.getEsquerda() == null) {
+            return 1;
+        }
+        if (aux.getDireita() == null && aux.getEsquerda() != null) {
+            return 1;
+        }
+        return 2;
+    }
+    
+    public boolean remove(double valor) {
+        No temp = this.raiz;
+        No ant = null;
+        
+        while (temp != null && temp.getValor() != valor) {
+            ant = temp;
+            if (valor < temp.getValor()) {
+                temp = temp.getEsquerda();
+            } else {
+                temp = temp.getDireita();
+            }
+        }
+        
+        if (temp == null) return false;
+        
+        if (grau(temp) == 0) {
+            if (valor < ant.getValor()) {
+                ant.setEsquerda(null);
+            } else {
+                ant.setDireita(null);
+            }
+        }
+        if (grau(temp) == 1) {
+            
+        }
+        if (grau(temp) == 2) {
+            
+        }
+        return true;
+    }
+    
 }
